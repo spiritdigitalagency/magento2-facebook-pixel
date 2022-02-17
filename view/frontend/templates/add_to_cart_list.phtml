@@ -1,0 +1,18 @@
+<?php
+/** @var $block ListView */
+
+use Spirit\FacebookPixel\Block\ListView;
+
+$jsonProducts = $block->getJsonProductCollection();
+?>
+
+<script>
+    requirejs(['jquery', 'jquery/ui'], function ($) {
+        $('.action.tocart').on('click', function () {
+            fbq('track', 'AddToCart', {
+                "currency": "EUR",
+                "contents": <?= $jsonProducts; ?>
+            });
+        });
+    });
+</script>

@@ -1,0 +1,16 @@
+<?php
+/** @var $block ListView */
+
+use Spirit\FacebookPixel\Block\ListView;
+
+$jsonProducts = $block->getJsonProductCollection(); ?>
+<script>
+    requirejs(['jquery', 'domReady'], function (domReady) {
+        domReady(function () {
+            fbq('track', 'ViewCategory', {
+                //"value": '<?//= $list_prod->getSubtotal() ?>//',
+                "contents": <?= $jsonProducts; ?>
+            });
+        });
+    });
+</script>

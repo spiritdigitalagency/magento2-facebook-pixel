@@ -1,0 +1,36 @@
+<?php
+/** @var $block Spirit\FacebookPixel\Block\Quote */
+//if ($block->getFacebookPixelID()) {
+//    $eventId = \Facebook\BusinessExtension\Helper\EventIdGenerator::guidv4();
+//    $block->trackServerEvent($eventId);
+//    ?>
+
+<?php
+// Get all visible items in cart
+$quote = $block->getQuoteData();
+$helper = $this->helper('\Magento\Checkout\Helper\Cart');
+
+?>
+<script>
+    requirejs(['jquery', 'domReady'], function (domReady) {
+        domReady(function () {
+            <?php $items = [];
+            foreach ($quote->getAllVisibleItems() as $index => $item):
+                $items[] = [
+                    'content_id' => $item->getSku(),
+                    'content_name' => $item->getName(),
+                    'price' => $item->getPrice(),
+                    'quantity' => $item->getQty(),
+                    'index' => $index + 1,
+                ];
+            endforeach; ?>
+            fbq('track', 'InitiateCheckout', {
+                "currency": "EUR",
+                "value": '<?= $quote->getSubtotal() ?>',
+                "num_items": '<?=  $helper->getSummaryCount(); ?>',
+                "contents": <?= json_encode($items) ?>
+            });
+        });
+    });
+</script>
+

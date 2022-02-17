@@ -1,0 +1,31 @@
+<?php
+/** @var $block Spirit\FacebookPixel\Block\Success */
+?>
+
+<?php if ($block->getOrderId()): ?>
+
+    <script type="text/javascript">
+        requirejs(['jquery', 'domReady'], function (domReady) {
+            domReady(function () {
+                <?php $items = [];
+                foreach ($block->getItems() as $index => $item):
+                    $items[] = [
+                        'content_id' => $item->getSku(),
+                        'content_name' => $item->getName(),
+                        'price' => $item->getPrice(),
+                        'quantity' => $item->getQtyOrdered(),
+                        'index' => $index + 1,
+                    ];
+                endforeach; ?>
+                fbq('track', 'Purchase', {
+                    "transaction_id": "<?= /* @noEscape */ $block->getOrderId(); ?>",
+                    "currency": "EUR",
+                    "num_items": '<?=  $block->getSuccessItemsCount(); ?>',
+                    "content_type": 'product'
+                    "value": '<?= /* @noEscape */ $block->getTotal() ?>',
+                    "contents": <?= json_encode($items) ?>
+                });
+            });
+        });
+    </script>
+<?php endif; ?>
