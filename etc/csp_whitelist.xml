@@ -3,7 +3,7 @@
     <policies>
         <policy id="script-src">
             <values>
-                <value id="facebook" type="host">*.facebook.com</value>
+                <value id="facebook" type="host">*.facebook.net</value>
             </values>
         </policy>
         <policy id="frame-src">
@@ -12,6 +12,11 @@
             </values>
         </policy>
         <policy id="img-src">
+            <values>
+                <value id="facebook" type="host">*.facebook.com</value>
+            </values>
+        </policy>
+        <policy id="form-action">
             <values>
                 <value id="facebook" type="host">*.facebook.com</value>
             </values>
