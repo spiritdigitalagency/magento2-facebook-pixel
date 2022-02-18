@@ -2,17 +2,22 @@
 /** @var $block ListView */
 
 use Spirit\FacebookPixel\Block\ListView;
-
-$jsonProducts = $block->getJsonProductCollection();
 ?>
-
 <script>
     requirejs(['jquery', 'jquery/ui'], function ($) {
         $('.action.tocart').on('click', function () {
-            fbq('track', 'AddToCart', {
-                "currency": "EUR",
-                "contents": <?= $jsonProducts; ?>
-            });
+            const productElement = $(this).closest('.product-item-info')
+            const priceElement = $(productElement).find('[data-price-type="finalPrice"]')
+            const product_id = $(productElement).find('[data-product-id]').attr('data-product-id')
+            const price = $(priceElement).attr('data-price-amount')
+            if (price) {
+                fbq('track', 'AddToCart', {
+                    "currency": "EUR",
+                    "value": price,
+                    "content_ids": product_id,
+                    "content_type": 'product',
+                });
+            }
         });
     });
 </script>
