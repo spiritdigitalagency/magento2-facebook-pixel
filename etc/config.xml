@@ -11,5 +11,23 @@
                 </storefront>
             </policies>
         </csp>
+        <spirit_facebook_pixel>
+            <general>
+                <status>0</status>
+                <pixel_id/>
+            </general>
+            <settings>
+                <add_to_cart>1</add_to_cart>
+                <add_to_cart_list>1</add_to_cart_list>
+                <add_to_cart_list_product_selector>.product-item-info</add_to_cart_list_product_selector>
+                <add_to_cart_list_button_selector>.action.tocart</add_to_cart_list_button_selector>
+                <add_to_cart_list_price_selector>[data-price-type="finalPrice"]</add_to_cart_list_price_selector>
+                <view_category>1</view_category>
+                <view_content>1</view_content>
+                <search>1</search>
+                <initiate_checkout>1</initiate_checkout>
+                <purchase>1</purchase>
+            </settings>
+        </spirit_facebook_pixel>
     </default>
 </config>

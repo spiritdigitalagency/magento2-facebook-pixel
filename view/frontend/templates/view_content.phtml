@@ -1,20 +1,23 @@
 <?php
-/* @var $block Magento\Catalog\Block\Product\View */
-
+/**
+ * @var $block Magento\Catalog\Block\Product\View
+ * @var $_helper Spirit\FacebookPixel\ViewModel\Config
+ */
+$_helper = $block->getData('config');
 $product = $block->getProduct();
 ?>
-<script>
-    requirejs(['jquery', 'domReady'], function (domReady) {
-        domReady(function () {
-            fbq('track', 'ViewContent', {
-                "value": '<?= $product->getFinalPrice() ?>',
-                "currency": "EUR",
-                "content_ids": '<?= $product->getSku() ?>',
-                "content_name": '<?= htmlentities($product->getName()) ?>',
-                "content_type": 'product',
-                //"content_category": '<?//= $product->getCategory()->getName() ?>//',
+<?php if ($_helper->getIsActive()): ?>
+    <script>
+        requirejs(['jquery', 'domReady'], function (domReady) {
+            domReady(function () {
+                fbq('track', 'ViewContent', {
+                    "value": '<?= /* @noEscape */ $product->getFinalPrice() ?>',
+                    "currency": "EUR",
+                    "content_ids": '<?= /* @noEscape */ $product->getSku() ?>',
+                    "content_name": '<?= /* @noEscape */ htmlentities($product->getName()) ?>',
+                    "content_type": 'product',
+                });
             });
         });
-    });
-</script>
-
+    </script>
+<?php endif; ?>

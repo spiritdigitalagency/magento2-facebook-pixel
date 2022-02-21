@@ -1,14 +1,19 @@
 <?php
-/** @var $block Spirit\FacebookPixel\Block\Search; */
+/**
+ * @var $block Spirit\FacebookPixel\Block\Search
+ * @var $_helper Spirit\FacebookPixel\ViewModel\Config
+ */
+$_helper = $block->getData('config');
 ?>
-<script>
-    requirejs(['jquery', 'domReady'], function (domReady) {
-        domReady(function () {
-            fbq('track', 'Search', {
-                "currency": "EUR",
-                "search_string": "<?= $block->getSearchQuery() ?>"
+<?php if ($_helper->getIsActive()): ?>
+    <script>
+        requirejs(['jquery', 'domReady'], function (domReady) {
+            domReady(function () {
+                fbq('track', 'Search', {
+                    "currency": "EUR",
+                    "search_string": "<?= /* @noEscape */ $block->getSearchQuery() ?>"
+                });
             });
         });
-    });
-</script>
-
+    </script>
+<?php endif; ?>

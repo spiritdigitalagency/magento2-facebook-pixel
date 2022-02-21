@@ -1,15 +1,22 @@
-<?php /** @var $block Magento\Catalog\Block\Product\View */ ?>
-<?php $product = $block->getProduct(); ?>
-<script>
-    requirejs(['jquery', 'jquery/ui'], function ($) {
-        $('#product-addtocart-button').on('click', function () {
-            fbq('track', 'AddToCart', {
-                "value": '<?= $product->getFinalPrice() ?>',
-                "currency": "EUR",
-                "content_ids": '<?= $product->getSku() ?>',
-                "content_name": '<?= htmlentities($product->getName()) ?>',
-                "content_type": 'product',
+<?php
+/**
+ * @var $block Magento\Catalog\Block\Product\View
+ * @var $_helper Spirit\FacebookPixel\ViewModel\Config
+ */
+$_helper = $block->getData('config');
+$product = $block->getProduct(); ?>
+<?php if ($_helper->getIsActive()): ?>
+    <script>
+        requirejs(['jquery', 'jquery/ui'], function ($) {
+            $('#product-addtocart-button').on('click', function () {
+                fbq('track', 'AddToCart', {
+                    "value": '<?= /* @noEscape */ $product->getFinalPrice() ?>',
+                    "currency": "EUR",
+                    "content_ids": '<?= /* @noEscape */ $product->getSku() ?>',
+                    "content_name": '<?= /* @noEscape */ htmlentities($product->getName()) ?>',
+                    "content_type": 'product',
+                });
             });
         });
-    });
-</script>
+    </script>
+<?php endif; ?>

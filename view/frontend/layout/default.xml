@@ -9,7 +9,7 @@
                    before="-"
                    ifconfig="spirit_facebook_pixel/general/status">
                 <arguments>
-                    <argument name="config" xsi:type="object">Spirit\Core\ViewModel\Config</argument>
+                    <argument name="config" xsi:type="object">Spirit\FacebookPixel\ViewModel\Config</argument>
                 </arguments>
             </block>
         </referenceBlock>

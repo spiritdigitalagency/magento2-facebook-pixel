@@ -1,16 +1,18 @@
 <?php
-/** @var $block ListView */
-
-use Spirit\FacebookPixel\Block\ListView;
-
+/**
+ * @var $block Spirit\FacebookPixel\Block\ListView
+ * @var $_helper Spirit\FacebookPixel\ViewModel\Config
+ */
+$_helper = $block->getData('config');
 $jsonProducts = $block->getJsonProductCollection(); ?>
-<script>
-    requirejs(['jquery', 'domReady'], function (domReady) {
-        domReady(function () {
-            fbq('track', 'ViewCategory', {
-                //"value": '<?//= $list_prod->getSubtotal() ?>//',
-                "contents": <?= $jsonProducts; ?>
+<?php if ($_helper->getIsActive()): ?>
+    <script>
+        requirejs(['jquery', 'domReady'], function (domReady) {
+            domReady(function () {
+                fbq('track', 'ViewCategory', {
+                    "contents": <?= /* @noEscape */ $jsonProducts; ?>
+                });
             });
         });
-    });
-</script>
+    </script>
+<?php endif; ?>

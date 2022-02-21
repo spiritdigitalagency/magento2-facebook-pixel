@@ -7,7 +7,11 @@
                    name="spirit.facebook.pixel.purchase"
                    template="Spirit_FacebookPixel::purchase.phtml"
                    before="-"
-                   ifconfig="spirit_facebook_pixel/general/status" />
+                   ifconfig="spirit_facebook_pixel/general/status">
+                <arguments>
+                    <argument name="config" xsi:type="object">Spirit\FacebookPixel\ViewModel\Config</argument>
+                </arguments>
+            </block>
         </referenceContainer>
     </body>
 </page>

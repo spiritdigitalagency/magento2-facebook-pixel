@@ -3,19 +3,24 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceBlock name="head.additional">
+        <referenceContainer name="before.body.end">
             <block class="Magento\Catalog\Block\Product\View"
                    name="spirit.facebook.pixel.add_to_cart"
                    template="Spirit_FacebookPixel::add_to_cart.phtml"
                    before="-"
-                   ifconfig="spirit_facebook_pixel/general/status" />
-        </referenceBlock>
-        <referenceContainer name="before.body.end">
+                   ifconfig="spirit_facebook_pixel/general/status">
+                <arguments>
+                    <argument name="config" xsi:type="object">Spirit\FacebookPixel\ViewModel\Config</argument>
+                </arguments>
+            </block>
             <block class="Magento\Catalog\Block\Product\View"
                    name="spirit.facebook.pixel.view_content"
                    template="Spirit_FacebookPixel::view_content.phtml"
-                   ifconfig="spirit_facebook_pixel/general/status"
-            />
+                   ifconfig="spirit_facebook_pixel/general/status">
+                <arguments>
+                    <argument name="config" xsi:type="object">Spirit\FacebookPixel\ViewModel\Config</argument>
+                </arguments>
+            </block>
         </referenceContainer>
     </body>
 </page>

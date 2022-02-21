@@ -5,8 +5,7 @@
  */
 $_helper = $block->getData('config');
 ?>
-<?php if ($container_id = $_helper->getConfig('spirit_facebook_pixel/general/pixel_id')) { ?>
-
+<?php if ($_helper->getIsActive()): ?>
     <script>
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return;
@@ -26,15 +25,18 @@ $_helper = $block->getData('config');
             s.parentNode.insertBefore(t, s)
         }(window, document, 'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '<?= $container_id ?>');
+        fbq('init', '<?= /* @noEscape */ $_helper->getPixelID() ?>');
         fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-                   src="https://www.facebook.com/tr?id=<?= $container_id ?>&ev=PageView&noscript=1"
-        /></noscript>
-<?php } else { ?>
-    <!-- NO Pixel ID is configured, please goto Admin -->
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=<?= /* @noEscape */
+                $_helper->getPixelID() ?>&ev=PageView&noscript=1"
+        />
+    </noscript>
+<?php else: ?>
     <script>
-        console.log('No facebook pixel is configured, please log in as a admin and then visit Stores -> Configuration -> Spirit -> Facebook Pixel');
+        console.log('No facebook pixel ID is configured');
+        console.log('Please check your settings at Stores -> Configuration -> Spirit -> Facebook Pixel');
     </script>
-<?php } ?>
+<?php endif; ?>

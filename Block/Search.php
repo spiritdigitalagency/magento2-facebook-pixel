@@ -3,7 +3,6 @@
 
 namespace Spirit\FacebookPixel\Block;
 
-
 class Search extends \Magento\Framework\View\Element\Template
 {
     /**
@@ -11,11 +10,6 @@ class Search extends \Magento\Framework\View\Element\Template
      */
     public function getSearchQuery()
     {
-        return htmlspecialchars(
-            $this->getRequest()->getParam('q'),
-            ENT_QUOTES,
-            'UTF-8'
-        );
+        return $this->_escaper->escapeHtml($this->getRequest()->getParam('q'));
     }
 }
-

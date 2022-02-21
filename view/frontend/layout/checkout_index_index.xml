@@ -3,11 +3,15 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="before.body.end">
-            <block class="Spirit\FacebookPixel\Block\Quote"
-                   name="spirit.facebook.pixel.initate_checkout"
+            <block class="Magento\Checkout\Block\Cart"
+                   name="spirit.facebook.pixel.initiate_checkout"
                    template="Spirit_FacebookPixel::initiate_checkout.phtml"
                    before="-"
-                   ifconfig="spirit_facebook_pixel/general/status" />
+                   ifconfig="spirit_facebook_pixel/general/status">
+                <arguments>
+                    <argument name="config" xsi:type="object">Spirit\FacebookPixel\ViewModel\Config</argument>
+                </arguments>
+            </block>
         </referenceContainer>
     </body>
 </page>

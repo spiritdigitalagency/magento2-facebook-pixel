@@ -1,9 +1,11 @@
 <?php
-/** @var $block Spirit\FacebookPixel\Block\Success */
+/**
+ * @var $block Spirit\FacebookPixel\Block\Success
+ * @var $_helper Spirit\FacebookPixel\ViewModel\Config
+ */
+$_helper = $block->getData('config');
 ?>
-
-<?php if ($block->getOrderId()): ?>
-
+<?php if ($_helper->getIsActive() && $block->getOrderId()): ?>
     <script type="text/javascript">
         requirejs(['jquery', 'domReady'], function (domReady) {
             domReady(function () {
@@ -18,12 +20,12 @@
                     ];
                 endforeach; ?>
                 fbq('track', 'Purchase', {
-                    "transaction_id": "<?= /* @noEscape */ $block->getOrderId(); ?>",
+                    "transaction_id": "<?= /* @noEscape */ /* @noEscape */ $block->getOrderId(); ?>",
                     "currency": "EUR",
-                    "num_items": '<?=  $block->getSuccessItemsCount(); ?>',
+                    "num_items": '<?= /* @noEscape */  $block->getSuccessItemsCount(); ?>',
                     "content_type": 'product'
-                    "value": '<?= /* @noEscape */ $block->getTotal() ?>',
-                    "contents": <?= json_encode($items) ?>
+                    "value": '<?= /* @noEscape */ /* @noEscape */ $block->getTotal() ?>',
+                    "contents": <?= /* @noEscape */ json_encode($items) ?>
                 });
             });
         });

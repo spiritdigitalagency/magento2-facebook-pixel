@@ -5,7 +5,7 @@
         <section id="spirit_facebook_pixel"
                  translate="label"
                  type="text"
-                 sortOrder="100"
+                 sortOrder="10"
                  showInDefault="1"
                  showInWebsite="1"
                  showInStore="1">
@@ -38,6 +38,125 @@
                     <depends>
                         <field id="status">1</field>
                     </depends>
+                </field>
+            </group>
+            <group id="settings" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Settings</label>
+                <field id="add_to_cart"
+                       translate="label"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable Add To Cart</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enables or disables AddToCart event.</comment>
+                </field>
+                <field id="add_to_cart_list"
+                       translate="label"
+                       type="select"
+                       sortOrder="20"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable Add To Cart in Category Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enables or disables add_to_cart event in category page.</comment>
+                </field>
+                <field id="add_to_cart_list_product_selector"
+                       translate="label"
+                       type="text"
+                       sortOrder="21"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Product Wrapper Selector (Category Page)</label>
+                    <comment>CSS selector for product wrapper.</comment>
+                    <depends>
+                        <field id="add_to_cart_list">1</field>
+                    </depends>
+                </field>
+                <field id="add_to_cart_list_button_selector"
+                       translate="label"
+                       type="text"
+                       sortOrder="22"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Add To Cart Button Selector (Category Page)</label>
+                    <comment>CSS selector for add to cart button.</comment>
+                    <depends>
+                        <field id="add_to_cart_list">1</field>
+                    </depends>
+                </field>
+                <field id="add_to_cart_list_price_selector"
+                       translate="label"
+                       type="text"
+                       sortOrder="23"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Add To Cart Price Selector (Category Page)</label>
+                    <comment>CSS selector for price selection.</comment>
+                    <depends>
+                        <field id="add_to_cart_list">1</field>
+                    </depends>
+                </field>
+                <field id="view_category"
+                       translate="label"
+                       type="select"
+                       sortOrder="30"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable View Category</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enables or disables view_category event.</comment>
+                </field>
+                <field id="view_content"
+                       translate="label"
+                       type="select"
+                       sortOrder="40"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable View Content</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enables or disables view_content event.</comment>
+                </field>
+                <field id="search"
+                       translate="label"
+                       type="select"
+                       sortOrder="50"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable Search</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enables or disables search event.</comment>
+                </field>
+                <field id="initiate_checkout"
+                       translate="label"
+                       type="select"
+                       sortOrder="60"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable Initiate Checkout</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enables or disables initiate_checkout event.</comment>
+                </field>
+                <field id="purchase"
+                       translate="label"
+                       type="select"
+                       sortOrder="70"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable Purchase</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enables or disables purchase event.</comment>
                 </field>
             </group>
         </section>
