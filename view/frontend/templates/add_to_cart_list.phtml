@@ -5,7 +5,7 @@
  */
 $_helper = $block->getData('config');
 ?>
-<?php if ($_helper->getIsActive()): ?>
+<?php if ($_helper->getIsActive() && $_helper->getIsAddToCartListActive()): ?>
     <?php $product_selector = $_helper->getAddToCartListProductSelector(); ?>
     <?php $add_to_cart_selector = $_helper->getAddToCartListProductSelector(); ?>
     <script>

@@ -5,7 +5,7 @@
  */
 $_helper = $block->getData('config');
 ?>
-<?php if ($_helper->getIsActive() && $block->getOrderId()): ?>
+<?php if ($_helper->getIsActive() && $_helper->getIsPurchaseActive() && $block->getOrderId()): ?>
     <script type="text/javascript">
         requirejs(['jquery', 'domReady'], function (domReady) {
             domReady(function () {

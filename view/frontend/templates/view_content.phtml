@@ -6,7 +6,7 @@
 $_helper = $block->getData('config');
 $product = $block->getProduct();
 ?>
-<?php if ($_helper->getIsActive()): ?>
+<?php if ($_helper->getIsActive() && $_helper->getIsViewContentActive()): ?>
     <script>
         requirejs(['jquery', 'domReady'], function (domReady) {
             domReady(function () {

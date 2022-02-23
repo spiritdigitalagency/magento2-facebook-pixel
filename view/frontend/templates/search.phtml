@@ -5,7 +5,7 @@
  */
 $_helper = $block->getData('config');
 ?>
-<?php if ($_helper->getIsActive()): ?>
+<?php if ($_helper->getIsActive() && $_helper->getIsSearchActive()): ?>
     <script>
         requirejs(['jquery', 'domReady'], function (domReady) {
             domReady(function () {

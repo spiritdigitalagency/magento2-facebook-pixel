@@ -5,7 +5,7 @@
  */
 $_helper = $block->getData('config');
 $product = $block->getProduct(); ?>
-<?php if ($_helper->getIsActive()): ?>
+<?php if ($_helper->getIsActive() && $_helper->getIsAddToCartActive()): ?>
     <script>
         requirejs(['jquery', 'jquery/ui'], function ($) {
             $('#product-addtocart-button').on('click', function () {

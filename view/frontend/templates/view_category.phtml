@@ -5,7 +5,7 @@
  */
 $_helper = $block->getData('config');
 $jsonProducts = $block->getJsonProductCollection(); ?>
-<?php if ($_helper->getIsActive()): ?>
+<?php if ($_helper->getIsActive() && $_helper->getIsViewCategoryActive()): ?>
     <script>
         requirejs(['jquery', 'domReady'], function (domReady) {
             domReady(function () {

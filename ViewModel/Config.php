@@ -58,6 +58,14 @@ class Config implements ArgumentInterface
     /**
      * @return boolean
      */
+    public function getIsAddToCartActive(): bool
+    {
+        return $this->getConfig('settings/add_to_cart') ?? false;
+    }
+
+    /**
+     * @return boolean
+     */
     public function getIsAddToCartListActive(): bool
     {
         return $this->getConfig('settings/add_to_cart_list') ?? false;
