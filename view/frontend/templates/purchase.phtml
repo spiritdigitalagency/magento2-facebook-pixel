@@ -23,7 +23,7 @@ $_helper = $block->getData('config');
                     "transaction_id": "<?= /* @noEscape */ /* @noEscape */ $block->getOrderId(); ?>",
                     "currency": "EUR",
                     "num_items": '<?= /* @noEscape */  $block->getSuccessItemsCount(); ?>',
-                    "content_type": 'product'
+                    "content_type": 'product',
                     "value": '<?= /* @noEscape */ /* @noEscape */ $block->getTotal() ?>',
                     "contents": <?= /* @noEscape */ json_encode($items) ?>
                 });
